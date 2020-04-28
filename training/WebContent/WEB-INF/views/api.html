@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="scripts/api.js"></script>
+</head>
+<body>
+<h1>API</h1>
+<button type="submit" name="action" onclick="location.href='./api'">社員寮の数 JSON</button>
+<button type="submit" name="action" onclick="location.href='./api2'">test JSON </button>
+<button type="submit" name="action" onclick="location.href='./api3'">部屋一覧 JSONダウンロード</button><br>
+
+<button type="button" id="getDomCount">社員寮の数を表示</button>
+<button type="button" id="getRoom">部屋一覧を表示</button>
+
+<h3 id="domCount"></h3>
+<table id="roomList"></table>
+</body>
+</html>

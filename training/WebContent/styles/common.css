@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+/* BODY全体 */
+body {
+    font-family: Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, メイリオ, Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+/* ボタン共通 */
+input[type="button"],
+input[type="submit"],
+button {
+    display       : inline-block;
+    font-size     : 11pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 9px 15px;    /* 余白       */
+    background    : #006633;     /* 背景色     */
+    color         : #ffffff;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    border-style  : none;        /* 枠         */
+    min-width     : 180px;       /* 最小幅     */
+}
+
+button:hover {
+    opacity: 0.7 ;
+}
+
+  .back {
+	background    : #666666 ;     /* 背景色     */
+	display:inline;
+
+}
+
+/* パンくずリスト */
+
+.topicpath ol li ,.topicpath p{
+        /* liを横並び＆ブレットを消す */
+        display: inline;
+        list-style-type: none;
+}
+
+.topicpath ol li:before {
+        /* liの前に記号追加 */
+        content: " > ";
+}
+
+.topicpath ol li:first-child:before {
+        /* 最初のliだけcontentを消す */
+        content:"";
+}
+
+/* メッセージ */
+.message {
+    color         : red;         /* 文字色     */
+    font-weight   : bold;        /* 文字の太さ */
+}

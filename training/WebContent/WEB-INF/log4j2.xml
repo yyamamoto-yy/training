@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<Configuration>
+	<Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [%t] - %m%n" />
+        </Console>
+		<RollingFile name="file" fileName="C:\\training\\log_${date:yyyy-MM-dd}.log" filePattern="C:\\training\\log_${date:yyyy-MM-dd}-%i.log" append="true">
+			<PatternLayout pattern="[%-5p] [%d{yyyy/MM/dd HH:mm:ss.SSS}] [%t] - %m%n" />
+			<SizeBasedTriggeringPolicy size="1MB" />
+			<DefaultRolloverStrategy fileIndex="max" min="1" max="100" />
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Root level="trace">
+            <AppenderRef ref="Console" level="trace"/>
+			<AppenderRef ref="file" level="trace"/>
+		</Root>
+	</Loggers>
+</Configuration>

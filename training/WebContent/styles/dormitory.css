@@ -1,0 +1,179 @@
+@charset "UTF-8";
+
+.input-area, .list-area{
+	text-align: center;
+}
+
+/* table */
+table {
+    border-collapse: collapse;
+  }
+table,h3,
+.serch, .add{
+    margin-left: 20px
+
+}
+
+td.label{
+    background-color: #c6ffff;
+    color: #000000;
+}
+
+table th, table td {
+    border: solid 1px #6d6d6d;
+    padding: 2px 10px;
+    background-color:#ffffff;
+}
+
+.input-table tr:nth-child(odd){
+    background-color:#c0c0c0;
+}
+
+.list-table{
+	margin-left:auto; /*中央寄せ*/
+    margin-right:auto;
+}
+
+/* パンくずリスト */
+
+.topicpath ol li ,.topicpath p{
+        /* liを横並び＆ブレットを消す */
+        display: inline;
+        list-style-type: none;
+}
+
+.topicpath ol li:before {
+        /* liの前に記号追加 */
+        content: " > ";
+}
+
+.topicpath ol li:first-child:before {
+        /* 最初のliだけcontentを消す */
+        content:"";
+}
+
+
+button {
+    display       : inline-block;
+    font-size     : 11pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 9px 9px;    /* 余白       */
+    background    : #7aabfc;     /* 背景色     */
+    color         : #ffffff;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    border-style  : none;        /* 枠         */
+    min-width     : 180px;       /* 最小幅     */
+}
+
+button:hover {
+    opacity: 0.7 ;
+}
+
+.download{
+	background    : #cf81fe;     /* 背景色     */
+	min-width     : 70px;       /* 最小幅     */
+}
+
+.sbtn{
+	min-height    :32px;
+}
+
+/* 一括削除ボタン     */
+.delCheckBtn{
+    margin: auto;
+    text-align: left;
+    width: 450px
+}
+.delCheckForm{
+    display: inline;
+}
+#selectDeleteBtn{
+    background-color: #fb978c;
+    min-width: 60px;
+    margin-bottom: 3px;
+}
+
+.delete ,.update{
+    background-color: transparent;     /* 背景色     */
+    min-width     : 20px;
+}
+
+.back ,.reset {
+    background    : #666666 ;     /* 背景色     */
+    display       : inline-block;
+    font-size     : 11pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 9px 15px;    /* 余白       */
+    color         : #ffffff;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    border-style  : none;        /* 枠         */
+    min-width     : 180px;       /* 最小幅     */
+}
+
+.select , .form-tab{
+	display:flex;
+	margin: 0;
+}
+
+.select{
+	width: 500px;
+	margin-left:auto; /*中央寄せ*/
+    margin-right:auto;
+    margin-top: 15px;
+}
+
+form {
+    margin-left:auto; /*中央寄せ*/
+    margin-right:auto;
+    text-align: left;
+}
+
+form h2{
+	text-align: center;
+	margin:5px;
+}
+
+#input-form{
+	text-align: center;
+}
+
+.up-cancel{
+	display:inline;
+	margin-top:10px;
+}
+
+
+/*ラジオボタンデザイン*/
+.select input {
+    display: none;
+}
+.select label{
+    display: block;
+    float: left;
+    cursor: pointer;
+    width: 60px;
+    margin: 0;
+    padding: 6px;
+    background: #bdc3c7;
+    color: #869198;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1;
+    transition: .2s;
+}
+.select label:first-of-type{
+    border-radius: 3px 0 0 3px;
+}
+.select label:last-of-type{
+    border-radius: 0 3px 3px 0;
+}
+.select input[type="radio"]:checked + .search-label {
+    background-color: #a1b91d;
+    color: #fff;
+}
+.select input[type="radio"]:checked + .add-label {
+    background-color: #e67168;
+    color: #fff;
+}

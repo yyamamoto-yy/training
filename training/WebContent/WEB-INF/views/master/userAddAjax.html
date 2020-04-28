@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>部屋追加</title>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="scripts/jquery-3.4.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+body{
+    text-align: center;
+}
+table,.alert{
+    margin: 20px auto;
+}
+table{
+    padding-top:40px;
+    padding-buttom:40px;
+}
+#alert{
+    width:300px;
+}
+h3{
+    padding-top: 30px;
+}
+form{
+    margin-bottom: 30px;
+}
+div{
+    margin: auto;
+    margin-top:100px;
+    background:white;
+    width:350px;
+}
+body{
+    background: gray;
+}
+</style>
+</head>
+<body>
+<div>
+	<h3>ユーザ新規登録</h3>
+	<form action="" method="post">
+    <div id="alert"class="alert">登録情報を入力してください。</div>
+        <table>
+            <tr>
+               <td><input type="text" id="addId"  value="" class="form-control" placeholder="ユーザ名" ></td>
+            </tr>
+            <tr>
+               <td><input type="text" id="addPass" value="" class="form-control" placeholder="パスワード"></td>
+            </tr>
+        </table>
+        <input type="button" id="add" name="add" value="新規登録ajax" class="btn btn-primary">
+        <input type="button" class="btn btn-secondary" onclick="location.href='./MasterUser'" value="キャンセル">
+    </form>
+    <br>
+</div>
+<script>
+
+
+    $(function(){
+
+       $("#add").on("click",function(){
+
+    	   //アラートのスタイルをリセット
+    	   if($("#alert").hasClass("alert-success")){
+    		    $("#alert").removeClass("alert-success");
+    	   }
+    	   if($("#alert").hasClass("alert-danger")){
+               $("#alert").removeClass("alert-danger");
+           }
+
+    	   $(document).ajaxStart(function() {
+               $("#overlay").fadeIn(500);
+           });
+           $(document).ajaxStop(function() {
+               $("#overlay").fadeOut(500);
+           });
+
+            var chkSubmit = true;
+            var name = $.trim($("#addId").val());
+                //入力確認
+                if(name == ""){
+                    $("#alert").text("ユーザー名を入力してください。");
+                    $("#alert").addClass("alert-danger");//アラートのスタイル
+                    return;
+                }else{
+                    $("#alert").text("");
+                }
+                if($("#addPass").val() == ""){
+                    $("#alert").text("パスワードを入力してください。");
+                    $("#alert").addClass("alert-danger");//アラートのスタイル
+                    return
+                }else{
+                    $("#alert").text("");
+                }
+            if(chkSubmit){
+                add();
+            }else{
+                return false;
+            }
+        });
+        //登録処理
+        function add(){
+            var name =$("#addId").val();
+            var pass =$("#addPass").val();
+            var param = {
+                "id":name,
+                "pass":pass
+            };
+            $.ajax({
+                Type:"post",
+                data:param,
+                dataType:"json",
+                url:"/training/userAddAjax",
+                }).done( function(data) {
+                    if (data[0].result == 0) { // 正常完了時の処理
+                    	$("#alert").text(data[0].msg);
+
+                        $("#alert").addClass("alert-success");//アラートのスタイル
+
+                    } else if (data[0].result == 1) { // 重複時の処理
+                        $("#alert").text(data[0].msg);
+
+                        $("#alert").addClass("alert-danger");//アラートのスタイル
+
+                    } else if (data[0].result == 2) { // Exception発生時の処理
+                    	$("#alert").text(data[0].msg);
+                    	$("#alert").addClass("alert-danger");//アラートのスタイル
+                        console.log(data[0].err);
+                    }
+                }).fail( function(jqXHR, textStatus, errorThrown) { // サーバ由来のエラー（404など）
+
+                    alert('通信失敗');
+
+                  //  console.log(jqXHR);
+                  //  console.log(textStatus);
+                  //  console.log(errorThrown);
+                });
+        }
+    });
+</script>
+</body>
+</html>
